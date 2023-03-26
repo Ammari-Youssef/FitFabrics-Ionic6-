@@ -1,0 +1,7 @@
+{
+  "name": "FitFab",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
