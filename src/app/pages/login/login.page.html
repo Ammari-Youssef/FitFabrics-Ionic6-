@@ -1,0 +1,39 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Login</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content fullscreen="true">
+  <h1 class="ion-padding">Welcome back to FitFabrics</h1>
+  <p >Please log in </p>
+  
+  <ion-button expand="block" (click)="onGoogleSignIn()" fill="clear">
+    <ion-icon name="logo-google" slot="end"></ion-icon>
+    Sign in with Google
+  </ion-button>
+
+  <form (ngSubmit)="login(loginfrm)" #loginfrm="ngForm">
+    <ion-item class="ion-padding">
+      <ion-label position="floating">E-mail</ion-label>
+      <ion-icon name="mail-outline" slot="start"/>
+      <ion-input type="email" [(ngModel)]="email" #mail="ngModel" name="email" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"/>
+      <ion-note color="danger" *ngIf="mail.touched && mail.invalid ">invalid e-mail input </ion-note>
+    </ion-item>
+    <ion-item class="ion-padding" >
+      <ion-label position="floating">Password</ion-label>
+      <ion-icon name="shield-outline" slot="start"/>
+      <ion-input type="password" [(ngModel)]="password" #pass="ngModel" name="password"  required minlength="5"/>
+      <ion-note color="danger" *ngIf="pass.touched && pass.invalid" slot="error">invalid password input (+5 characters)</ion-note>
+    </ion-item>
+
+     <ion-button type="submit" expand="block" fill="clear" [disabled]="loginfrm.invalid">Log in</ion-button>
+     <p >You do not have an account ?</p>
+     
+     <ion-button id="sgn" (click)="goSignUp()" fill="clear" expand="block" >Sign Up</ion-button>
+  </form>
+
+  
+  
+  
+</ion-content>
