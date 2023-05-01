@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouteReuseStrategy } from '@angular/router';
 
@@ -14,17 +14,33 @@ import {FirestoreModule} from '@angular/fire/firestore'
 
 import { environment } from 'src/environments/environment';
 
+//API
+import { HttpClientModule } from '@angular/common/http';
+import { CommonModule } from '@angular/common';
+//Mes guards 
+import { AuthGuard } from './guards/auth.guard';
+import { AuthentificationService } from './shared/authentification.service';
+
+
+
 @NgModule({
   declarations: [AppComponent],
-  imports: [BrowserModule,
-    IonicModule.forRoot(), 
+  imports: [
+    BrowserModule,
+    IonicModule.forRoot(),
     AppRoutingModule,
-     AngularFireModule.initializeApp(environment.firebaseConfig),
+    HttpClientModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFireAuthModule,
-    FirestoreModule
-
+    FirestoreModule,
+    CommonModule,
   ],
-  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
+  providers: [
+    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
+    AuthGuard,
+    AuthentificationService,
+  ],
   bootstrap: [AppComponent],
+  //  schemas: [CUSTOM_ELEMENTS_SCHEMA] // Add this line
 })
 export class AppModule {}

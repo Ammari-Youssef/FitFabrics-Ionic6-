@@ -1,51 +1,71 @@
-import { NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import {
   redirectLoggedInTo,
   redirectUnauthorizedTo,
   canActivate,
-  AuthGuard
-}from '@angular/fire/auth-guard'
+  AuthGuard,
+} from '@angular/fire/auth-guard';
+import { CommonModule } from '@angular/common';
+import { IonicModule } from '@ionic/angular';
+import { FormsModule } from '@angular/forms';
 
-const redirectUnauthorizedToLogin = ()=> redirectUnauthorizedTo(['/login'])
+const redirectUnauthorizedToLogin = () => redirectUnauthorizedTo(['/login']);
 
-const redirectLoggedInToHome= ()=> redirectLoggedInTo(['home'])
+const redirectLoggedInToHome = () => redirectLoggedInTo(['home']);
 
 const routes: Routes = [
   {
-    path: 'home',
-    loadChildren: () => import('./pages/home/home.module').then( m => m.HomePageModule),
-  //  canActivate: [AuthGuard]
-  },
-  {
     path: '',
     redirectTo: 'login',
-    pathMatch: 'full'
+    pathMatch: 'full',
   },
   {
     path: 'login',
-    loadChildren: () => import('./pages/login/login.module').then( m => m.LoginPageModule),
-    title:"FitFab Log in",
-    
-    
+    loadChildren: () =>
+      import('./pages/login/login.module').then((m) => m.LoginPageModule),
+    title: 'FitFab Log in',
   },
   {
     path: 'register',
-    loadChildren: () => import('./pages/register/register.module').then( m => m.RegisterPageModule),
-    title:"FitFab Sign Up"
+    loadChildren: () =>
+      import('./pages/register/register.module').then(
+        (m) => m.RegisterPageModule
+      ),
+    title: 'FitFab Sign Up',
   },
   {
     path: 'hometabs',
-    loadChildren: () => import('./pages/hometabs/hometabs.module').then( m => m.HometabsPageModule)
+    loadChildren: () =>
+      import('./pages/hometabs/hometabs.module').then(
+        (m) => m.HometabsPageModule
+      ),
+    // canActivate: [AuthGuard],
   },
-  
- 
+  {
+    path: 'product-details/:id_prod',
+    loadChildren: () =>
+      import('./pages/product-details/product-details.module').then(
+        (m) => m.ProductDetailsPageModule
+      ),
+  },
+  {
+    path: 'category/:id_cat',
+    loadChildren: () =>
+      import('./pages/category/category.module').then(
+        (m) => m.CategoryPageModule
+      ),
+  },
 ];
 
 @NgModule({
   imports: [
-    RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules })
+    IonicModule,
+    CommonModule,
+    FormsModule,
+    RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules }),
   ],
-  exports: [RouterModule]
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

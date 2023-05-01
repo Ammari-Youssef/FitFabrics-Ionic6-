@@ -1,20 +1,78 @@
-<ion-header [translucent]="true">
+<ion-header >
   <ion-toolbar>
-    <ion-title>
-      FitFabrics
-    </ion-title>
+    <ion-title>FitFabrics Store</ion-title>
+    <ion-buttons slot="start">
+     <div class="avatar-container">
+        <ion-avatar>
+          <img src="assets/icon/fitfabrics-website-favicon-color.png" alt="app-logo" title="FitFabrics" />
+        </ion-avatar>
+     </div>
+    </ion-buttons>
+    <ion-buttons slot="end">
+      <ion-avatar *ngIf="profile">
+        <img src="{{profile.photoUrl}}" alt="user-profile" title="{{profile.name}}" />
+      </ion-avatar>
+    </ion-buttons>
+  </ion-toolbar>
+  <ion-toolbar>
+    <div class="search ion-padding">
+      <ion-searchbar placeholder="Search for a product" />
+    </div>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content>
+ 
+  
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
+  <div class="title ion-padding">
+    <h2>Categories</h2>
+    <p routerLink="/category/all">See all</p>
+  </div>
+
+  <div class="category-slider ion-padding-start">
+    <ion-slides [options]="{ slidesPerView: 'auto', zoom: false, grabCursor: true ,pager:true}">
+
+      <ion-slide *ngFor="let category of categories" title="{{category.title}}">
+        <ion-col [routerLink]="['/category', category.id]">
+          <h4>{{ category.title }}</h4>
+          <img src="{{ category.image }}" alt="{{category.title}}" />
+        </ion-col>
+      </ion-slide>
+    </ion-slides>
+  </div>
+
+  <div class="title ion-padding">
+    <h2 class="font-bold">Featured</h2>
+    <p>See all</p>
+  </div>
+
+  <div class="product-slider ion-padding-start">
+    <ion-slides [options]="{ slidesPerView: 'auto', zoom: false, grabCursor: true }">
+      <ion-slide *ngFor="let product of products">
+        <ion-col class="ion-text-left" [routerLink]="['/product-details', product.id]" routerDirection="forward">
+          <img src="{{ product.image }}" alt="{{product.title}}" title="{{product.title}}" />
+          <p>${{ product.price }}</p>
+          <h6>{{ product.name }}</h6>
+        </ion-col>
+      </ion-slide>
+    </ion-slides>
+  </div>
+
+  <div class="title ion-padding">
+    <h2 class="font-bold">Best Sell</h2>
+    <p>See all</p>
+  </div>
+
+  <div class="product-slider ion-padding-start">
+    <ion-slides [options]="{ slidesPerView: 'auto', zoom: false, grabCursor: true }">
+      <ion-slide *ngFor="let product of products">
+        <ion-col class="ion-text-left" [routerLink]="['/product-details', product.id]" routerDirection="forward">
+          <img src="{{ product.image }}" alt="{{ product.title }}" />
+          <p>${{ product.price }}</p>
+          <h6>{{ product.name }}</h6>
+        </ion-col>
+      </ion-slide>
+    </ion-slides>
   </div>
 </ion-content>

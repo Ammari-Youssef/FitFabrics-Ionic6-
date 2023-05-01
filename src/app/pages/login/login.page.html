@@ -1,17 +1,25 @@
 <ion-header>
   <ion-toolbar>
     <ion-title>Login</ion-title>
+       <ion-progress-bar *ngIf="isLoggingIn" type="indeterminate"></ion-progress-bar>
   </ion-toolbar>
 </ion-header>
 
 <ion-content fullscreen="true">
-  <h1 class="ion-padding">Welcome back to FitFabrics</h1>
+
+  
+  <h1 class="ion-padding">Welcome back to </h1>
+  <ion-img class="logo" src="assets/icon/logo-no-background.svg" alt="logo store" />
   <p >Please log in </p>
   
   <ion-button expand="block" (click)="onGoogleSignIn()" fill="clear">
     <ion-icon name="logo-google" slot="end"></ion-icon>
     Sign in with Google
   </ion-button>
+
+ <p *ngIf="loginError" color="danger" class="input-errors">
+   E-mail or password are wrong or do not exist
+ </p>
 
   <form (ngSubmit)="login(loginfrm)" #loginfrm="ngForm">
     <ion-item class="ion-padding">
@@ -33,7 +41,6 @@
      <ion-button id="sgn" (click)="goSignUp()" fill="clear" expand="block" >Sign Up</ion-button>
   </form>
 
-  
   
   
 </ion-content>

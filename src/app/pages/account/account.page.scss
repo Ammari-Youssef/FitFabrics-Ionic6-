@@ -1,0 +1,22 @@
+
+ion-toolbar {
+  ion-title{
+    text-align: center;
+  }
+
+  .avatar-container {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin-right: 15px; /* adjust as needed */
+    flex: 1;
+  }
+
+  ion-avatar {
+    width: 60px; /* adjust as needed */
+    height: 40%; /* adjust as needed */
+  }
+
+
+}
+

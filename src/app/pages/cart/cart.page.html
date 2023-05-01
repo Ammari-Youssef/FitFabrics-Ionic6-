@@ -1,7 +1,19 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>cart</ion-title>
-  </ion-toolbar>
+   <ion-toolbar>
+     <ion-title>Cart</ion-title>
+     <ion-buttons slot="start">
+       <div class="avatar-container">
+         <ion-avatar>
+           <img src="assets/icon/fitfabrics-website-favicon-color.png" alt="app-logo" title="FitFabrics" />
+         </ion-avatar>
+       </div>
+     </ion-buttons>
+     <ion-buttons slot="end">
+       <ion-avatar *ngIf="profile">
+         <img src="{{profile.photoUrl}}" alt="user-profile" title="{{profile.name}}" />
+       </ion-avatar>
+     </ion-buttons>
+   </ion-toolbar>
 </ion-header>
 
 <ion-content fullscreen="true">
@@ -13,7 +25,7 @@
       </ion-thumbnail>
       <ion-label>
         <h2>{{ item.name }}</h2>
-        <p>{{ item.price | currency }}</p>
+        <p>{{ item.price | currency }} hhhhhhhh</p>
         <p>{{ item.description }}</p>
         
         <ion-input type="number" [(ngModel)]="item.quantity"></ion-input>

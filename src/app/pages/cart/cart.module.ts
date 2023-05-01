@@ -13,8 +13,8 @@ import { CartPage } from './cart.page';
     CommonModule,
     FormsModule,
     IonicModule,
-    CartPageRoutingModule
+    CartPageRoutingModule,
   ],
-  declarations: [CartPage]
+  declarations: [CartPage,]
 })
 export class CartPageModule {}
