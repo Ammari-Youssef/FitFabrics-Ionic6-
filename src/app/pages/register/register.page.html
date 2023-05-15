@@ -13,7 +13,7 @@
   <ion-img class="logo" src="assets/icon/logo-no-background.svg" alt="logo store" />
   <p>Please fill the form below to sign up</p>
 
-{{user|json}}
+<!-- {{user|json}} -->
   <form (ngSubmit)="register(rgfrm)" #rgfrm="ngForm">
 
     <ion-item class="ion-padding">
@@ -38,14 +38,14 @@
     <ion-item class="ion-padding" fill="clear">
       <ion-label position="floating">Password</ion-label>
       <ion-icon name="shield-outline" slot="start" />
-      <ion-input type="password" name="password" [(ngModel)]="password" #pass="ngModel" required minlength="5" />
+      <ion-input type="password" name="password" [(ngModel)]="password" #pass="ngModel" required minlength="6" />
       <ion-note color="danger" *ngIf="pass.touched && pass.invalid ">Invalid password input</ion-note>
     </ion-item>
 
     <ion-item class="ion-padding" fill="clear">
       <ion-label position="floating">Confirm password</ion-label>
       <ion-icon name="shield-outline" slot="start" />
-      <ion-input type="password" name="password" #repass="ngModel" [(ngModel)]="repassword" required minlength="5" />
+      <ion-input type="password" name="password" #repass="ngModel" [(ngModel)]="repassword" required minlength="6" />
       <ion-note color="danger" *ngIf="repass.touched && repass.invalid">Invalid Confirmation password input</ion-note>
     </ion-item>
 

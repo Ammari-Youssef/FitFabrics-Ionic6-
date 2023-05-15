@@ -8,4 +8,3 @@ export interface User {
     photoUrl?:string,
     
 }
-    // uid:string 

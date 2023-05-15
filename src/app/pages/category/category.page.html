@@ -11,15 +11,17 @@
 <ion-grid>
   <ion-row>
     <ion-col size="6" *ngFor="let product of products" [routerLink]="['/product-details', product.id]">
-      <ion-card>
+      <ion-card [ngStyle]="{ 'opacity': product.stock === 0 ? '0.5' : '1' }"  >
         <ion-img src="{{ product.image }}"></ion-img>
         <ion-card-header>
+          <h4 class="text-overlay sold-out" *ngIf="product.stock==0">Sold out</h4>
           <ion-card-subtitle>{{ product.category }}</ion-card-subtitle>
-          <ion-card-title>{{ product.name }}</ion-card-title>
+          <ion-card-title>{{ product.title }}</ion-card-title>
         </ion-card-header>
         <ion-card-content>
-          <p>{{ product.description }}</p>
-          <ion-button expand="block">Add to Cart</ion-button>
+          <!-- <p>{{ product.description }}</p> -->
+          <ion-button expand="block" 
+          class="ion-no-margin ion-no-padding ion-text-wrap">Check this out </ion-button>
         </ion-card-content>
       </ion-card>
     </ion-col>

@@ -1,12 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { NavController } from '@ionic/angular';
 
-import { RegisterPage } from '../register/register.page';
 
-import {Router} from '@angular/router';
+import { Router } from '@angular/router';
 import { NgForm } from '@angular/forms';
 import { AuthentificationService } from 'src/app/shared/authentification.service';
-import { UserService } from 'src/app/shared/user.service';
+import { AngularFireAuth } from '@angular/fire/compat/auth';
 
 @Component({
   selector: 'app-login',
@@ -23,15 +22,20 @@ export class LoginPage implements OnInit {
     public navCtrl: NavController,
     private router: Router,
     private authService: AuthentificationService,
-    private userService: UserService
+    private afAuth:AngularFireAuth,
   ) {}
 
   ngOnInit() {}
 
   // ionViewWillEnter() {
+
+  //   let isLogged= this.afAuth.currentUser
   //   if (this.authService.isLoggedIn()) {
-    
+
   //     this.router.navigate(['hometabs/home']);
+  //   }
+  //   else{
+  //     this.router.navigate(['login']);
   //   }
   // }
 
@@ -70,7 +74,7 @@ export class LoginPage implements OnInit {
   async onGoogleSignIn(): Promise<void> {
     try {
       await this.authService.googleSignIn();
-      this.isLoggingIn=true;
+      this.isLoggingIn = true;
       // Google sign-in successful, navigate to next page
       this.navCtrl.navigateRoot('/hometabs/home');
     } catch (error) {

@@ -13,6 +13,7 @@
         <img src="{{profile.photoUrl}}" alt="user-profile" title="{{profile.name}}" />
       </ion-avatar>
     </ion-buttons>
+    
   </ion-toolbar>
   <ion-toolbar>
     <div class="search ion-padding">
@@ -27,7 +28,7 @@
 
   <div class="title ion-padding">
     <h2>Categories</h2>
-    <p routerLink="/category/all">See all</p>
+    <p routerLink="/category/All products">See all</p>
   </div>
 
   <div class="category-slider ion-padding-start">
@@ -44,16 +45,16 @@
 
   <div class="title ion-padding">
     <h2 class="font-bold">Featured</h2>
-    <p>See all</p>
+    <p routerLink="/category/Featured products">See all</p>
   </div>
 
   <div class="product-slider ion-padding-start">
     <ion-slides [options]="{ slidesPerView: 'auto', zoom: false, grabCursor: true }">
-      <ion-slide *ngFor="let product of products">
+      <ion-slide *ngFor="let product of featured_products">
         <ion-col class="ion-text-left" [routerLink]="['/product-details', product.id]" routerDirection="forward">
           <img src="{{ product.image }}" alt="{{product.title}}" title="{{product.title}}" />
           <p>${{ product.price }}</p>
-          <h6>{{ product.name }}</h6>
+          <h6>{{ product.title }}</h6>
         </ion-col>
       </ion-slide>
     </ion-slides>
@@ -61,16 +62,16 @@
 
   <div class="title ion-padding">
     <h2 class="font-bold">Best Sell</h2>
-    <p>See all</p>
+    <p routerLink="/category/Best_selling products">See all</p>
   </div>
 
   <div class="product-slider ion-padding-start">
     <ion-slides [options]="{ slidesPerView: 'auto', zoom: false, grabCursor: true }">
-      <ion-slide *ngFor="let product of products">
+      <ion-slide *ngFor="let product of best_selling_products">
         <ion-col class="ion-text-left" [routerLink]="['/product-details', product.id]" routerDirection="forward">
           <img src="{{ product.image }}" alt="{{ product.title }}" />
           <p>${{ product.price }}</p>
-          <h6>{{ product.name }}</h6>
+          <h6>{{ product.title }}</h6>
         </ion-col>
       </ion-slide>
     </ion-slides>

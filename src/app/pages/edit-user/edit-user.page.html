@@ -1,0 +1,49 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Edit user settings </ion-title>
+
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <h1>Update user's information </h1>
+  <!-- <ion-img class="logo" src="assets/icon/logo-no-background.svg" alt="logo store" /> -->
+  <p>Please fill the form below to edit your details</p>
+
+  {{myUser|json}}
+  <form (ngSubmit)="confirmEditAccount(editUsrfrm)" #editUsrfrm="ngForm">
+
+    <ion-item class="ion-padding">
+      <ion-label position="floating">Firstname</ion-label>
+      <ion-icon name="person-outline" slot="start" />
+      <ion-input type="text" name="firstname" [(ngModel)]="myUser.firstname" #fname="ngModel" required />
+      <ion-note color="danger" *ngIf="fname.touched && fname.invalid">Invalid firstname input !</ion-note>
+    </ion-item>
+    <ion-item class="ion-padding">
+      <ion-label position="floating">Lastname</ion-label>
+      <ion-icon name="person-outline" slot="start" />
+      <ion-input type="text" name="lastname" [(ngModel)]="myUser.lastname" #lname="ngModel" required />
+      <ion-note color="danger" *ngIf="lname.touched && lname.invalid">Invalid lastname input !</ion-note>
+    </ion-item>
+  
+
+    <ion-item class="ion-padding">
+      <ion-label position="floating" class="ion-padding">Date of Birth(MM/DD/YYYY)</ion-label>
+      <ion-icon name="calendar-outline" slot="start"></ion-icon>
+      <ion-input type="text" [(ngModel)]="myUser.dateOfBirth" name="dateOfBirth" #dob="ngModel"
+        pattern="^(0[1-9]|1[0-2])/(0[1-9]|[12][0-9]|3[01])/(19|20)\d{2}$" required
+        (ngModelChange)="dob.valid && calculateAge()" />
+      <ion-note>you are {{myUser.age}} years old</ion-note>
+      <ion-note color="danger" *ngIf="dob.touched && dob.invalid">invalid date format mm/dd/yyyy</ion-note>
+    </ion-item>
+
+
+    
+
+
+    <ion-button type="submit" expand="block" fill="clear" [disabled]="editUsrfrm.invalid">Update changes</ion-button>
+  </form>
+</ion-content>

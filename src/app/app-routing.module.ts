@@ -56,6 +56,25 @@ const routes: Routes = [
         (m) => m.CategoryPageModule
       ),
   },
+  {
+    path: 'edit-profile',
+    loadChildren: () => import('./pages/edit-user/edit-user.module').then( m => m.EditUserPageModule)
+  },
+  {
+    path: 'settings',
+    loadChildren: () => import('./pages/settings/settings.module').then( m => m.SettingsPageModule)
+  },
+  {
+    path: 'change-password',
+    loadChildren: () => import('./pages/change-password/change-password.module').then( m => m.ChangePasswordPageModule)
+  },
+  // {
+  //   path: '',
+  //   loadComponent: () =>
+  //     import('./components/searchar/searchar.component').then(
+  //       (m) => m.SearcharComponent
+  //     ),
+  // },
 ];
 
 @NgModule({

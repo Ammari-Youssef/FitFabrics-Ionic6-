@@ -18,3 +18,41 @@ ion-toolbar {
 
 
 }
+
+
+ion-card {
+  height: 400px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+ion-card-content {
+  flex-grow: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+ion-card-header {
+  flex-shrink: 0;
+}
+ion-img {
+  height: 200px;
+  width: 100%;
+  object-fit: fill;
+}
+
+ion-card-title{
+  font-size: 80%;
+}
+
+.sold-out {
+
+  // transform: translate(-50%, -50%);
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: red;
+margin: 0;
+  z-index: 1000;
+}
+

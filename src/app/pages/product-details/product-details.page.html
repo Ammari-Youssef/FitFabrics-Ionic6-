@@ -2,7 +2,7 @@
   <ion-toolbar>
     <ion-title title="{{produit.title}}" *ngIf="produit">{{produit.title}}</ion-title>
     <ion-buttons slot="start">
-      <ion-back-button defaultHref="/hometabs/home" [text]="'Back'"></ion-back-button>
+      <ion-back-button  ></ion-back-button>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
@@ -24,7 +24,7 @@
 
     <h4 class="price">
       {{produit.price | currency}}
-      <span class="real-price">$62</span>
+      <span class="real-price" *ngIf="produit.price < 80">$80</span>
     </h4>
   </div>
 
@@ -45,6 +45,11 @@
         <div class="count">49 Reviews</div>
       </ion-col>
     </ion-row>
+     
+         <ion-button expand="full" color="primary" (click)="addToCart()">Add to cart
+           <ion-icon slot="end" name="bag-add"></ion-icon>
+         </ion-button>
+      
   </div>
 
   <div class="seperator">
@@ -62,7 +67,7 @@
     <hr>
   </div>
 
-  <div class="variation">
+  <div class="variation" *ngIf="produit.category!='jewelery'">
     <ion-segment (ionChange)="segmentChanged($event)" value="size">
       <ion-segment-button value="size">
         <ion-label>Select Size</ion-label>
@@ -77,34 +82,36 @@
     <hr>
   </div>
 
-  <div class="variation-selector">
+  <div class="variation-selector" *ngIf="produit.category!='jewelery'">
     <div class="sizes" [class.active-variation]="activeVariation == 'size'">
-      <div [class.active]="selectedSize == 1" (click)="changeSize(1)">
+      <div [class.active]="selectedSize == 1" (click)="changeSize(1)" >
         S
       </div>
-      <div [class.active]="selectedSize == 2" (click)="changeSize(2)">
+      <div [class.active]="selectedSize == 2" (click)="changeSize(2)" >
         M
       </div>
-      <div [class.active]="selectedSize == 3" (click)="changeSize(3)">
+      <div [class.active]="selectedSize == 3" (click)="changeSize(3)" >
         L
       </div>
-      <div [class.active]="selectedSize == 4" (click)="changeSize(4)">
+      <div [class.active]="selectedSize == 4" (click)="changeSize(4)" >
         XL
       </div>
     </div>
 
-    <div class="colors" [class.active-variation]="activeVariation == 'color'">
-      <div [class.active]="selectedColor == 1" (click)="changeColor(1)">
+    <div class="colors" [class.active-variation]="activeVariation == 'color'" *ngIf="produit.category!='jewelery'">
+      <div [class.active]="selectedColor == 1" (click)="changeColor(1)" >
         BLACK
       </div>
-      <div [class.active]="selectedColor == 2" (click)="changeColor(2)">
+      <div [class.active]="selectedColor == 2" (click)="changeColor(2)" >
         GREEN
       </div>
-      <div [class.active]="selectedColor == 3" (click)="changeColor(3)">
+      <div [class.active]="selectedColor == 3" (click)="changeColor(3)" >
         BLUE
       </div>
     </div>
   </div>
 
-  
+   
+ 
+
 </ion-content>

@@ -9,11 +9,18 @@ import { User } from '../models/User.model';
   providedIn: 'root',
 })
 export class AuthentificationService {
-  currentUser: User | null = null;
+  currentUser: User | null | any = null;
+
   constructor(
     private afAuth: AngularFireAuth,
     private firestore: AngularFirestore
   ) {}
+
+  //user actuelle
+  getCurrentUser(): Promise<firebase.User | null> {
+    return this.afAuth.currentUser;
+  }
+
   // Log in function with email
   async login(email: string, password: string) {
     try {
@@ -22,10 +29,8 @@ export class AuthentificationService {
         password
       );
       const user = result.user;
-      if (user)
-        await firebase
-          .auth()
-          // .setPersistence(firebase.auth.Auth.Persistence.LOCAL);
+      if (user) await firebase.auth();
+      // .setPersistence(firebase.auth.Auth.Persistence.LOCAL);
       return result;
     } catch (error) {
       console.log(error);
