@@ -22,14 +22,12 @@ export class ProductDetailsPage implements OnInit {
   color!: string;
   size!: string;
   //
-  
+
   constructor(
     private prodService: ProductService,
     private activatedRoute: ActivatedRoute,
     private animatioCntrl: AnimationController,
-    private cartService: CartService,
-  
-    
+    private cartService: CartService
   ) {}
 
   ngOnInit() {
@@ -38,9 +36,7 @@ export class ProductDetailsPage implements OnInit {
     this.prodService.getProductByID(this.productId).subscribe((product) => {
       this.produit = product;
 
-      console.log( this.produit);
-
-      
+      console.log(this.produit);
     });
 
     //animation
@@ -136,26 +132,36 @@ export class ProductDetailsPage implements OnInit {
   }
 
   addToCart() {
-    if (this.produit.category!="jewelery" &&(!this.color || !this.size)) {
-      this.cartService.showToast('Choose size and color before adding it to your cart');
-    }
+    if (this.produit.category != 'jewelery' && (!this.color || !this.size))
+    
+    this.cartService.showToast('Choose size and color before adding it to your cart');
+
     // create cart item object with all the necessary properties
-
-    else {
+  else  if (this.produit.category == 'jewelery' ) {
       const item: CartItem = {
-      id:  this.produit.id,
-      product: this.produit,
-      quantity: 1,
-      size: this.size,
-      color: this.color,
-      timestamp: new Date(),
-    };
-    this.produit.quantity = 1
+        id: this.produit.id,
+        product: this.produit,
+        quantity: 1,
+        size: 'no size',
+        color: 'no color',
+        timestamp: new Date(),
+      };
 
-    // add item to cart
-    this.cartService.addToCart(item);
+      // add item to cart
+      this.cartService.addToCart(item);
+    } else {
+      const item: CartItem = {
+        id: this.produit.id,
+        product: this.produit,
+        quantity: 1,
+        size: this.size,
+        color: this.color,
+        timestamp: new Date(),
+      };
+      this.produit.quantity = 1;
+
+      // add item to cart
+      this.cartService.addToCart(item);
     }
   }
-
-  
 }

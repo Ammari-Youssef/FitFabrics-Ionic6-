@@ -15,22 +15,22 @@ export class SearcharComponent implements OnInit {
   constructor(private productService: ProductService) {}
 
   ngOnInit(): void {
-    this.products$ = this.productService.getAllAPIProducts();
+    this.products$ = this.productService.getProducts();
   }
 
   searchProducts(): void {
     if (this.searchQuery.trim()) {
       // if the search query is empty or contains only whitespaces, show all products
-      this.products$ = this.productService.getAllAPIProducts();
+      this.products$ = this.productService.getProducts();
       return;
     }
 
     this.products$ = this.productService
-      .getAllAPIProducts()
+      .getProducts()
       .pipe(
         map((products) =>
           products.filter((product) =>
-            product.title.toLowerCase().includes(this.searchQuery.toLowerCase())
+            product['title'].toLowerCase().includes(this.searchQuery.toLowerCase())
           )
         )
       );
@@ -40,8 +40,10 @@ export class SearcharComponent implements OnInit {
     // wait for 500ms after the user stops typing to reduce unnecessary API calls
     this.searchQuery = event.target.value.trim();
     this.productService
-      .getAllAPIProducts()
+      .getProducts()
       .pipe(debounceTime(500), distinctUntilChanged())
       .subscribe(() => this.searchProducts());
+
+      return
   }
 }

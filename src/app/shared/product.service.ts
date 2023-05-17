@@ -66,7 +66,8 @@ export class ProductService {
     return this.Featureditems
   }
   getBestSellingProducts(): Observable<any[]> {
-return this.BestSellitems
+return this.BestSellCollection.valueChanges({idField: 'id',
+});
   }
 
   getProductByID(id: string): Observable<any> {

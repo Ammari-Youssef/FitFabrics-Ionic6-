@@ -29,9 +29,10 @@ export class CartPage implements OnInit {
         this.firestore
           .collection('users')
           .doc(user.uid)
-          .valueChanges()
+          .valueChanges({ idField: 'id' })
           .subscribe((userData) => {
             this.profile = userData;
+            console.log(this.profile)
           });
       }
     });
@@ -55,7 +56,7 @@ export class CartPage implements OnInit {
  
   checkout() {
     if(this.cartItems.length)
-    for (let i of this.cartItems) this.cartService.SaveCartItem2(i);
+    for (let i of this.cartItems) this.cartService.SaveCartItem7(i,);
 
     else this.cartService.showToast("No items to checkout !")
   }

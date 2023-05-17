@@ -6,6 +6,7 @@ import { HomePage } from './home.page';
 
 import { HomePageRoutingModule } from './home-routing.module';
 import { SearcharComponent } from 'src/app/components/searchar/searchar.component';
+import { SearcharModule } from 'src/app/components/searchar/searchar.module';
 
 
 @NgModule({
@@ -14,6 +15,7 @@ import { SearcharComponent } from 'src/app/components/searchar/searchar.componen
     FormsModule,
     IonicModule,
     HomePageRoutingModule,
+    SearcharModule
   ],
   declarations: [HomePage,SearcharComponent]
 })

@@ -20,7 +20,7 @@
 <ion-content>
   <!-- <ion-list> -->
     <ion-item class="ion-padding" *ngFor="let item of cartItems">
-      <ion-thumbnail slot="start">
+      <ion-thumbnail slot="start" [routerLink]="['/product-details', item.product.id]">
         <img [src]="item.product.image" alt="no product">
       </ion-thumbnail>
       <ion-label>
@@ -28,8 +28,8 @@
          <p class="ion-text-right">Category: {{ item.product.category }}</p>
          <p>stock: {{ item.product.stock }}</p>
         <p class="ion-text-right">Price :{{ item.product.price | currency }} </p>
-        <p *ngIf="item.size">Size: {{ item.size }}</p>
-        <p class="ion-text-right" *ngIf="item.color">Color: {{ item.color }}</p>
+        <p *ngIf="item.size!='no size'">Size: {{ item.size }}</p>
+        <p class="ion-text-right" *ngIf="item.color!='no color'">Color: {{ item.color }}</p>
         
     <div class="quantity-buttons">
     <ion-item>

@@ -15,11 +15,12 @@
     </ion-buttons>
     
   </ion-toolbar>
-  <ion-toolbar>
+  <!-- <ion-toolbar>
     <div class="search ion-padding">
       <ion-searchbar placeholder="Search for a product" />
     </div>
-  </ion-toolbar>
+  </ion-toolbar> -->
+  <app-searchar/>
 </ion-header>
 
 <ion-content>
@@ -62,11 +63,11 @@
 
   <div class="title ion-padding">
     <h2 class="font-bold">Best Sell</h2>
-    <p routerLink="/category/Best_selling products">See all</p>
+    <p routerLink="/category/Best selling products">See all</p>
   </div>
 
   <div class="product-slider ion-padding-start">
-    <ion-slides [options]="{ slidesPerView: 'auto', zoom: false, grabCursor: true }">
+    <ion-slides [options]="{ slidesPerView: 'auto', zoom: false, grabCursor: true}" loop="true">
       <ion-slide *ngFor="let product of best_selling_products">
         <ion-col class="ion-text-left" [routerLink]="['/product-details', product.id]" routerDirection="forward">
           <img src="{{ product.image }}" alt="{{ product.title }}" />

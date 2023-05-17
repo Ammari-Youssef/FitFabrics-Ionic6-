@@ -15,7 +15,6 @@ export class HomePage implements OnInit {
   constructor(
     public prodService: ProductService,
     public navCtrl: NavController,
-    private activeroute: ActivatedRoute,
     public router: Router,
     private afAuth: AngularFireAuth,
     private firestore: AngularFirestore
@@ -59,13 +58,13 @@ export class HomePage implements OnInit {
     
    this.prodService.getProducts().subscribe((products) => {
      this.products = products;
-     console.log("prods :" ,this.products)
+    //  console.log("prods :" ,this.products)
    });
     //Ramener les produits speciaux
     
     this.prodService.getFeaturedProducts().subscribe((data) => {
       this.featured_products = data;
-      console.log("Featured prods :" ,this.featured_products)
+      // console.log("Featured prods :" ,this.featured_products)
       //  this.filteredProducts = data;
      
     });
@@ -78,16 +77,16 @@ export class HomePage implements OnInit {
     //Ramener les categories
     this.categories = this.prodService.getAllCategories();
 
-    console.log(this.categories);
+    // console.log(this.categories);
     // console.log(this.products);
   }
 
-  goToCategoryPage(categoryId: string) {
-    console.log('Category ID:', categoryId);
+  // goToCategoryPage(categoryId: string) {
+  //   console.log('Category ID:', categoryId);
 
-    // this.navCtrl.navigateForward(`category/${categoryId}`)
-    this.router.navigateByUrl(`/category/${categoryId}`);
-  }
+  //   // this.navCtrl.navigateForward(`category/${categoryId}`)
+  //   this.router.navigateByUrl(`/category/${categoryId}`);
+  // }
 
   //Recherche d'un produit par le nom
   onSearch(searchTerm: string) {
