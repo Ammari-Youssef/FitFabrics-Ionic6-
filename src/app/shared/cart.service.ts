@@ -13,9 +13,7 @@ import { BehaviorSubject, Observable } from 'rxjs';
 //Srvices
 import { AuthentificationService } from './authentification.service';
 //Models
-import { Product } from '../models/Product.model';
 import { CartItem } from '../models/CartItem.model';
-import { user } from '@angular/fire/auth';
 
 @Injectable({
   providedIn: 'root',
@@ -55,34 +53,7 @@ export class CartService {
       .valueChanges({ idField: 'id' });
   }
 
-  // SaveCartItem(item: CartItem): void {
-  //   //check if product exists
-
-  //   //Add if()
-  //   this.firestore
-  //     .collection('carts')
-  //     .doc(`${this.userId}`) //_${item.product.id}`)
-  //     .set({
-  //       // userId: this.userId,
-  //       color: item.color,
-  //       size: item.size,
-  //       product: item.product,
-  //       quantity: item.product.quantity,
-  //       timestamp: new Date(),
-  //     })
-  //     .then(() =>
-  //       this.firestore
-  //         .collection('products')
-  //         .doc(item.product.id)
-  //         .update({
-  //           stock: firebase.firestore.FieldValue.increment(
-  //             -item.product.quantity
-  //           ), //decrementer le stock
-  //         })
-  //         .then(() => this.presentAlert('success', 'suss'))
-  //         .catch(() => this.presentAlert('Error', 'error'))
-  //     );
-  // }
+  
 
   DeleteFromCart(itemId: string): void {
     this.firestore.collection('carts').doc(itemId).delete();
@@ -123,79 +94,6 @@ export class CartService {
     console.log(items);
   }
 
-  SaveCartItem2(item: CartItem): void {
-    const cartRef = this.firestore.collection('carts').doc(`${this.userId}`);
-
-    cartRef
-      .get()
-      .toPromise()
-      .then((docSnapshot) => {
-        const cartData = docSnapshot?.data() as any;
-        if (Array.isArray(cartData?.product)) {
-          const existingItemIndex = cartData.product.findIndex(
-            (p: Product, ci: CartItem) =>
-              p.id === item.product.id &&
-              ci.color === item.color &&
-              ci.size === item.size
-          );
-          if (existingItemIndex !== -1) {
-            // Item already exists in cart, update quantity
-            const existingItem = cartData.product[existingItemIndex];
-            cartData.product[existingItemIndex] = {
-              ...existingItem,
-              quantity: existingItem.product.quantity + item.product.quantity,
-              stock: firebase.firestore.FieldValue.increment(
-                -item.product.quantity
-              ),
-            };
-          } else {
-            const newItem = {
-              product: item.product,
-              quantity: item.product.quantity,
-              size: item.size,
-              color: item.color,
-            };
-            // Item does not exist in cart, add new item
-            cartData.product.push(newItem);
-          }
-          // Update cart in Firestore
-          cartRef.set({
-            userId: this.userId,
-            product: cartData.product,
-            // quantity: item.quantity,
-            size: item.size,
-            color: item.color,
-            timestamp: new Date(),
-          });
-        } else {
-          // Cart does not exist yet, create new cart with item
-          cartRef.set({
-            userId: this.userId,
-            product: item.product,
-            // quantity: item.quantity,
-            size: item.size,
-            color: item.color,
-            timestamp: new Date(),
-          });
-        }
-
-        // Update product stock in Firestore
-        this.firestore
-          .collection('products')
-          .doc(item.product.id)
-          .update({
-            stock: firebase.firestore.FieldValue.increment(
-              -item.product.quantity
-            ),
-          });
-
-        console.log('userid ' + this.userId);
-        this.presentAlert('Checkout Success', 'Products items saved in cart');
-      });
-  }
-
-  
-
   //Notifications de system
   async showToast(msg: string) {
     const toast = await this.toastController.create({
@@ -214,60 +112,7 @@ export class CartService {
     await alert.present();
   }
 
-  // async SaveCartItem5(item: CartItem) {
-  //   const cartRef: AngularFirestoreDocument<any> = this.firestore
-  //     .collection('carts')
-  //     .doc(this.userId);
-  //   const cartDocRef = cartRef.ref;
-
-  //   await firebase
-  //     .firestore()
-  //     .runTransaction(async (transaction) => {
-  //       const cartDoc = await transaction.get(cartDocRef);
-
-  //       // Check if the product already exists in the cart
-  //       const existingCartItemIndex = cartDoc
-  //         .data()
-  //         ?.items?.findIndex((it: any) => {
-  //           return (
-  //             item.product === it.product &&
-  //             item.color === it.color &&
-  //             item.size === it.size
-  //           );
-  //         });
-
-  //       if (existingCartItemIndex !== -1) {
-  //         // If the product exists in the cart, update its quantity
-  //         const existingCartItem = cartDoc.data()?.items[existingCartItemIndex];
-  //         if (existingCartItem) {
-  //           transaction.update(cartDocRef, {
-  //             ['items.' + existingCartItemIndex + '.quantity']:
-  //               item.product.quantity,
-  //           });
-  //         }
-  //       } else {
-  //         // If the product doesn't exist in the cart, add it as a new item
-  //         transaction.set(
-  //           cartDocRef,
-  //           {
-  //             items: firebase.firestore.FieldValue.arrayUnion(item),
-  //           },
-  //           { merge: true }
-  //         ); // Use merge option to update only the items array
-  //       }
-
-  //       this.firestore
-  //         .collection('products')
-  //         .doc(item.product.id)
-  //         .update({
-  //           stock: firebase.firestore.FieldValue.increment(
-  //             -item.product.quantity
-  //           ),
-  //         });
-  //     })
-  //     .then(() => this.presentAlert('success', 'yay'))
-  //     .catch(() => this.presentAlert('', 'yay'));
-  // }
+  
 
   async SaveCartItem7(item: CartItem) {
     const cartRef: AngularFirestoreDocument<any> = this.firestore
