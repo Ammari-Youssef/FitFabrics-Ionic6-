@@ -82,7 +82,7 @@ Feel free to explore the code and contribute to further enhancements of FitFabri
 
 | Select item  | Item selection successful |
 |------------|------------|
-| <img src="src/assets/readme/normal_item_details.jpeg" width="200"> | <img src="src/assets/readme/item_details_validated.jpeg" width="200"> |
+| <img src="src/assets/readme/normal_item_details.jpeg" > | <img src="src/assets/readme/item_details_validated.jpeg" > |
 
 
 
