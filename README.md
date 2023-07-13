@@ -75,6 +75,7 @@ Feel free to explore the code and contribute to further enhancements of FitFabri
 - products list 
 
 ![Image 1](src/assets/readme/featured_products.jpeg)
+---
 
 - Choose an item and add it to cart
  
