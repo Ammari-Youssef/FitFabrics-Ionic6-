@@ -93,7 +93,7 @@ Feel free to explore the code and contribute to further enhancements of FitFabri
 ---
 | Check the chosen items in cart  | Validate choice  |
 |------------|------------|
-| <img src="src/assets/readme/cart.jpeg" width="200"> | <img src="src/assets/readme/checkout_cart.jpeg" width="200"> |
+| <img src="src/assets/readme/cart.jpeg" width="100%" height="100%"> | <img src="src/assets/readme/checkout_cart.jpeg" width="100%" height="100%"> |
 ---
 
 <!-- - Check the chosen items in cart
