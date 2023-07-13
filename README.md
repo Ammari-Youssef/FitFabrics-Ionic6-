@@ -13,11 +13,11 @@ FitFabrics is a secure and user-friendly E-Commerce application, developed using
 
 
 ## Screenshots
+| Login | Register  | Home Page  |
+|------------|------------|------------|
+| ![Image 1](src/assets/readme/loginPage.jpeg)  | ![Image 2](src/assets/readme/registerPage.jpeg)  | ![Image 3](src/assets/readme/HomePage.jpeg)  |
 
-![App Screenshot](src/assets/readme/loginPage.jpeg)
-![App Screenshot](src/assets/readme/registerPage.jpeg)
-![App Screenshot](src/assets/readme/HomePage.jpeg)
-<!-- ![App Screenshot](src/assets/readme/featured_products.jpeg) -->
+
 
 
 ## Lessons Learned
@@ -72,27 +72,44 @@ Feel free to explore the code and contribute to further enhancements of FitFabri
 
 
 ## Other Screenshots
-![App Screenshot](src/assets/readme/featured_products.jpeg)
+- products list 
+
+![Image 1](src/assets/readme/featured_products.jpeg)
+
+- Choose an item and add it to cart
+ 
+
+| Select item  | Item selection successful |
+|------------|------------|
+| <img src="src/assets/readme/normal_item_details.jpeg" width="200"> | <img src="src/assets/readme/item_details_validated.jpeg" width="200"> |
+
+
+
 ---
-![App Screenshot](src/assets/readme/normal_item_details.jpeg)
----
-![App Screenshot](src/assets/readme/item_details_validated.jpeg)
----
+- Careful ! Some items may be sold out 
 ![App Screenshot](src/assets/readme/sold_out%20item.jpeg)
 
 ---
-![App Screenshot](src/assets/readme/cart.jpeg)
-
-![App Screenshot](src/assets/readme/checkout_cart.jpeg)
+| Check the chosen items in cart  | Validate choice  |
+|------------|------------|
+| <img src="src/assets/readme/cart.jpeg" width="200"> | <img src="src/assets/readme/checkout_cart.jpeg" width="200"> |
 ---
+
+<!-- - Check the chosen items in cart
+![App Screenshot](src/assets/readme/cart.jpeg)
+---
+- Validate choice
+![App Screenshot](src/assets/readme/checkout_cart.jpeg)
+--- -->
+
+- Account settings
 ![App Screenshot](src/assets/readme/settings.jpeg)
 ---
-![App Screenshot](src/assets/readme/user_settings.jpeg)
+- User CRUD 
 
----
-![App Screenshot](src/assets/readme/edit_user_success.jpeg)
----
+| User Settings  | User Editing Info | Change Password  | Delete User |
+|----------------|------------------|------------------|------------|
+| ![User Settings](src/assets/readme/user_settings.jpeg)  | ![User Editing Info](src/assets/readme/edit_user_success.jpeg)  | ![Change Password](src/assets/readme/change_pwd_filled.png) | ![New Image](src/assets/readme/delete.png) |
 
-![App Screenshot](src/assets/readme/change_pwd_filled.png)
----
-![App Screenshot](src/assets/readme/delete.png)
+
+
