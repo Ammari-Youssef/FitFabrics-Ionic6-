@@ -80,9 +80,9 @@ Feel free to explore the code and contribute to further enhancements of FitFabri
 - Choose an item and add it to cart
  
 
-| Select item  | Item selection successful |
-|------------|------------|
-| <img src="src/assets/readme/normal_item_details.jpeg" width="100%" height="100%" > | <img src="src/assets/readme/item_details_validated.jpeg" width="100%" height="100%" > |
+| Select item  | Item selection successful |Careful ! Some items may be sold out  |
+|------------|------------|------------|
+| <img src="src/assets/readme/normal_item_details.jpeg" width="100%" height="100%" > | <img src="src/assets/readme/item_details_validated.jpeg" width="100%" height="100%" > |<img src=src/assets/readme/sold_out%20item.jpeg  />
 
 
 
