@@ -82,15 +82,16 @@ Feel free to explore the code and contribute to further enhancements of FitFabri
 
 | Select item  | Item selection successful |Careful ! Some items may be sold out  |
 |------------|------------|------------|
-| <img src="src/assets/readme/normal_item_details.jpeg" width="100%" height="100%" > | <img src="src/assets/readme/item_details_validated.jpeg" width="100%" height="100%" > |<img src=src/assets/readme/sold_out%20item.jpeg  />
+| <img src="src/assets/readme/normal_item_details.jpeg" width="100%" height="100%" > | <img src="src/assets/readme/item_details_validated.jpeg" width="100%" height="100%" > |<img src=src/assets/readme/sold_out%20item.jpeg width="100%" height="100%" />
 
 
 
 ---
-- Careful ! Some items may be sold out 
+<!-- - Careful ! Some items may be sold out 
 ![App Screenshot](src/assets/readme/sold_out%20item.jpeg)
 
----
+--- -->
+
 | Check the chosen items in cart  | Validate choice  |
 |------------|------------|
 | <img src="src/assets/readme/cart.jpeg" width="100%" height="100%"> | <img src="src/assets/readme/checkout_cart.jpeg" width="100%" height="100%"> |
